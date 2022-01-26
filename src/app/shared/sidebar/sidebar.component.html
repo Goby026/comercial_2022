@@ -3,31 +3,37 @@
     <div class="sb-sidenav-menu">
       <div class="nav">
         <div class="sb-sidenav-menu-heading">Core</div>
+
         <a class="nav-link" routerLink="/dashboard">
           <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-          Dashboard
+          Principal
         </a>
-        <a class="nav-link" routerLink="/grafica1">
-          <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-          Gráfica1
-        </a>
-        <a class="nav-link" routerLink="/progress">
-          <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-          Progress
-        </a>
+
         <div class="sb-sidenav-menu-heading">Interface</div>
-        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
-          aria-expanded="false" aria-controls="collapseLayouts">
-          <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-          Layouts
-          <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-        </a>
-        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
-          <nav class="sb-sidenav-menu-nested nav">
-            <a class="nav-link" href="layout-static.html">Static Navigation</a>
-            <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a>
-          </nav>
+
+        <!-- lista de menus -->
+        <div *ngFor="let menu of menuItems">
+          <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
+            aria-expanded="false" aria-controls="collapseLayouts">
+            <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+            {{ menu.titulo }}
+            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+          </a>
+          <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+            <nav class="sb-sidenav-menu-nested nav">
+
+              <a *ngFor="let submenu of menu.submenu" class="nav-link" [routerLink]="submenu.path"
+                routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+                {{ submenu.titulo }}
+              </a>
+
+              <!-- <a class="nav-link" href="layout-sidenav-light.html">Light Sidenav</a> -->
+            </nav>
+          </div>
+
         </div>
+
+
         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
           aria-expanded="false" aria-controls="collapsePages">
           <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
@@ -76,8 +82,8 @@
       </div>
     </div>
     <div class="sb-sidenav-footer">
-      <div class="small">Logged in as:</div>
-      Start Bootstrap
+      <div class="small">Ingresaste como:</div>
+      Usuario:unlogged
     </div>
   </nav>
 </div>

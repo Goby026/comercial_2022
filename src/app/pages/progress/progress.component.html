@@ -1,1 +1,35 @@
-<p>progress works!</p>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-body">
+
+        <!-- barra progreso 1 -->
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+            [style.width]="getProgreso1">
+            <!-- [style.width]="getPorcentaje" -->
+          </div>
+        </div>
+
+        <!-- barra progreso 2 -->
+        <div class="progress mt-2">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar"
+            [style.width]="getProgreso2">
+            <!-- [style.width]="getPorcentaje" -->
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <app-incrementador (valorSalida)="progreso1 = $event" [progreso]="progreso1"></app-incrementador>
+  </div>
+  <div class="col-md-6">
+    <app-incrementador (valorSalida)="progreso2 = $event" [progreso]="progreso2"></app-incrementador>
+  </div>
+</div>
